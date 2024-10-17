@@ -1,7 +1,8 @@
 
 export default function canvasColorPicker({
     image,
-    state
+    state,
+    format
 }) {
 
     function loadImage(src) {
@@ -32,13 +33,14 @@ export default function canvasColorPicker({
              */
             const canvas = this.$refs.canvas;
 
-
             loadImage(image).then((img) => {
 
                 canvas.width = img.width;
                 canvas.height = img.height;
 
                 const ctx = canvas.getContext('2d');
+
+                console.log(img.src)
 
                 ctx.drawImage(img, 0, 0);
             })
@@ -65,7 +67,7 @@ export default function canvasColorPicker({
                 data
             } = ctx.getImageData(x, y, 1, 1);
 
-            this.previewColor = this.rgbToHex(data[0], data[1], data[2]);
+            this.previewColor = this.formatColor(data);
 
         },
 
@@ -90,10 +92,18 @@ export default function canvasColorPicker({
             }
         },
 
-        rgbToHex(r, g, b) {
+        colorHex(r, g, b) {
             const hex = [r, g, b].map((number) => number.toString(16).padStart(2, '0').toUpperCase()).join('');
 
             return `#${hex}`;
+        },
+
+        colorRgb(r, g, b) {
+            return `rgb(${r}, ${g}, ${b})`;
+        },
+
+        formatColor(color) {
+            return format === 'hex' ? this.colorHex(color[0], color[1], color[2]) : this.colorRgb(color[0], color[1], color[2])
         }
     }
 }

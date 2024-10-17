@@ -2,6 +2,7 @@
 
 namespace WallaceMaxters\FilamentImageColorPicker;
 
+use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Spatie\LaravelPackageTools\Package;
@@ -22,5 +23,9 @@ class ImageColorPickerServiceProvider extends PackageServiceProvider
         FilamentAsset::register([
             Css::make(static::$name, __DIR__ . '/../resources/dist/image-color-picker.css')->loadedOnRequest(),
         ], 'wallacemaxters/filament-image-color-picker');
+
+        FilamentAsset::register([
+            AlpineComponent::make(static::$name, __DIR__ . '/../resources/js/dist/components/image-color-picker.js'),
+        ]);
     }
 }

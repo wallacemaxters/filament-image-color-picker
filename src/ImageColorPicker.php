@@ -2,15 +2,16 @@
 
 namespace WallaceMaxters\FilamentImageColorPicker;
 
+use Closure;
 use Filament\Forms\Components\Field;
 
 class ImageColorPicker extends Field
 {
     protected string $view = 'image-color-picker::image-color-picker';
 
-    protected ?string $imageSrc = null;
+    protected  Closure|string|null $imageSrc = null;
 
-    public function image(string $src)
+    public function image(string|Closure $src)
     {
         $this->imageSrc = $src;
 
@@ -19,6 +20,6 @@ class ImageColorPicker extends Field
 
     public function getImageSrc()
     {
-        return $this->imageSrc;
+        return $this->evaluate($this->imageSrc);
     }
 }
