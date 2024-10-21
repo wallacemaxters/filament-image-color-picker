@@ -1,5 +1,7 @@
 # Image Color Picker for Filament 3
 
+This library contains a custom form field to pick color from a image. 
+
 ## Install
 
 ```bash
