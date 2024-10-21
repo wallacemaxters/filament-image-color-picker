@@ -27,4 +27,5 @@ return $form->schema([
 
 ## Preview
 
-<video src="preview.mp4" autoplay muted></video>
+https://github.com/user-attachments/assets/f1320c94-a275-4a54-8f3d-678607b46af9
+
