@@ -25,4 +25,4 @@ return $form->schema([
 
 ## Preview
 
-![](./screenshot.png)
+<video src="preview.mp4" autoplay muted></video>
