@@ -25,7 +25,15 @@ export default function canvasColorPicker({
 
         previewColor: null,
 
+        previewColorTimeout: 0,
+
         selectedColor: state,
+
+        x: 0,
+        y: 0,
+
+        clientX: 0,
+        clientY: 0,
 
         init() {
             /**
@@ -68,6 +76,16 @@ export default function canvasColorPicker({
             } = ctx.getImageData(x, y, 1, 1);
 
             this.previewColor = this.formatColor(data);
+
+            this.x = x;
+            this.y = y;
+
+            this.clientX = e.clientX;
+            this.clientY = e.clientY;
+
+            clearTimeout(this.previewColorTimeout);
+
+            this.previewColorTimeout = setTimeout(() => this.previewColor = null, 1500);
 
         },
 

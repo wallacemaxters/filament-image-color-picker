@@ -1,0 +1,29 @@
+.wm-image-color-picker{
+
+
+	canvas {
+		@apply w-full cursor-crosshair shadow shadow-neutral-400 dark:shadow-neutral-700 my-5;
+	}
+
+
+    > .wm-color-selected-container{
+        @apply flex items-center gap-2 p-1 rounded;
+
+        > .wm-color-preview{
+            @apply h-5 w-5 rounded-lg shadow-lg flex-none;
+        }
+    }
+
+}
+
+.wm-image-color-picker-preview-container{
+    @apply flex items-center gap-2 fixed z-50 bg-neutral-600 text-white p-1 rounded-lg pointer-events-none;
+
+    > .wm-color-preview{
+        @apply h-5 w-5 rounded-lg shadow-lg flex-none;
+    }
+
+    > .wm-color-preview-text{
+        @apply whitespace-nowrap;
+    }
+}

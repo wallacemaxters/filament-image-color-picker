@@ -21,11 +21,8 @@ class ImageColorPickerServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::register([
-            Css::make(static::$name, __DIR__ . '/../resources/dist/image-color-picker.css')->loadedOnRequest(),
-        ], 'wallacemaxters/filament-image-color-picker');
-
-        FilamentAsset::register([
+            Css::make(static::$name, __DIR__ . '/../resources/dist/image-color-picker.css'),
             AlpineComponent::make(static::$name, __DIR__ . '/../resources/js/dist/components/image-color-picker.js'),
-        ]);
+        ], 'wallacemaxters/filament-image-color-picker');
     }
 }

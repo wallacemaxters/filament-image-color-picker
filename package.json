@@ -2,15 +2,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:css": "postcss resources/css/index.css -o resources/dist/image-color-picker.css",
-    "build:js" : "node bin/build.js",
-    "build:js:dev" : "node bin/build.js --dev"
+    "build:css": "npx tailwindcss -i resources/css/index.css -o resources/dist/image-color-picker.css --postcss --minify --watch",
+    "build:js": "node bin/build.js",
+    "build:js:dev": "node bin/build.js --dev"
   },
   "devDependencies": {
     "cssnano": "^6.0.1",
+    "esbuild": "^0.24.0",
     "postcss": "^8.4.27",
     "postcss-cli": "^10.1.0",
-    "postcss-nesting": "^12.0.0",
-    "esbuild": "^0.24.0"
+    "postcss-nesting": "^12.0.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^3.4.14"
   }
 }
