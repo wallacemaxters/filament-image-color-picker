@@ -10,19 +10,40 @@ composer require wallacemaxters/filament-image-color-picker
 
 ## Usage
 
+Basic Input Usage example:
+
 ```php
 use WallaceMaxters\FilamentImageColorPicker\ImageColorPicker;
 
 // 
 
 return $form->schema([
-    TextInput::make('imagem_url')->url()->live(),
-    ImageColorPicker::make('cor')
+    TextInput::make('image_url')->url()->live(),
+    ImageColorPicker::make('color')
         ->columnSpanFull()
-        ->helperText('Move mouse along to image and click to picker the color')
         ->image(fn ($get) => $get('image_url')),
 ]);
 
+```
+
+
+Use ImageColorPicker as Action:
+
+```php
+ Forms\Components\ColorPicker::make('color')
+    ->suffixAction(fn ($get) => 
+        Forms\Components\Actions\Action::make('color-from-image')
+            ->action(function ($set, array $data) {
+                $set('color', $data['color']);
+            })
+            ->icon('heroicon-o-eye-dropper')
+            ->form([
+                ImageColorPicker::make('color')
+                    ->format('hsl')
+                    ->image(fn() => $get('image_url'))
+            ])
+
+    ),
 ```
 
 ## Preview
