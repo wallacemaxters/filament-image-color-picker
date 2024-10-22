@@ -10,7 +10,7 @@ $helperText = $getHelperText();
     x-data="canvasColorPicker({
         image: @js($getImageSrc()),
         state: $wire.$entangle('{{ $getStatePath() }}'),
-        format: 'rgb'
+        format: @js($getFormat())
     })"
 
     class="wm-image-color-picker"
@@ -33,10 +33,6 @@ $helperText = $getHelperText();
             <span class="wm-color-preview-text" x-text="previewColor"></span>
         </div>
     </template>
-
-    @if($helperText)
-        <div>{{ $helperText }}</div>
-    @endif
     <div wire:ignore>
         <canvas x-ref="canvas" class="w-full cursor-crosshair" x-on:mousemove="selectColor" x-on:click="onClick"></canvas>
     </div>

@@ -17,6 +17,76 @@ export default function canvasColorPicker({
         })
     }
 
+    function rgbToHsl(r, g, b) {
+
+        // Make r, g, and b fractions of 1
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        // Find greatest and smallest channel values
+        let cmin = Math.min(r, g, b),
+            cmax = Math.max(r, g, b),
+            delta = cmax - cmin,
+            h = 0,
+            s = 0,
+            l = 0;
+
+
+        // Calculate hue
+        // No difference
+        if (delta == 0)
+            h = 0;
+        // Red is max
+        else if (cmax == r)
+            h = ((g - b) / delta) % 6;
+        // Green is max
+        else if (cmax == g)
+            h = (b - r) / delta + 2;
+        // Blue is max
+        else
+            h = (r - g) / delta + 4;
+
+        h = Math.round(h * 60);
+
+        // Make negative hues positive behind 360°
+        if (h < 0)
+            h += 360;
+
+        // Calculate lightness
+        l = (cmax + cmin) / 2;
+
+        // Calculate saturation
+        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+        // Multiply l and s by 100
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
+
+        return "hsl(" + h + "," + s + "%," + l + "%)";
+    }
+
+    function colorHex(r, g, b) {
+        const hex = [r, g, b].map((number) => number.toString(16).padStart(2, '0').toUpperCase()).join('');
+
+        return `#${hex}`;
+    }
+
+    function colorRgb(r, g, b) {
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function formatColor(color) {
+
+        if (format === 'hex') {
+            return colorHex(color[0], color[1], color[2]);
+        } else if (format === 'hsl') {
+            return rgbToHsl(color[0], color[1], color[2]);
+        }
+
+        return colorRgb(color[0], color[1], color[2])
+    }
+
     return {
 
         /**
@@ -76,7 +146,7 @@ export default function canvasColorPicker({
                 data
             } = ctx.getImageData(x, y, 1, 1);
 
-            this.previewColor = this.formatColor(data);
+            this.previewColor = formatColor(data);
 
             this.x = x;
             this.y = y;
@@ -111,18 +181,6 @@ export default function canvasColorPicker({
             }
         },
 
-        colorHex(r, g, b) {
-            const hex = [r, g, b].map((number) => number.toString(16).padStart(2, '0').toUpperCase()).join('');
 
-            return `#${hex}`;
-        },
-
-        colorRgb(r, g, b) {
-            return `rgb(${r}, ${g}, ${b})`;
-        },
-
-        formatColor(color) {
-            return format === 'hex' ? this.colorHex(color[0], color[1], color[2]) : this.colorRgb(color[0], color[1], color[2])
-        }
     }
 }
