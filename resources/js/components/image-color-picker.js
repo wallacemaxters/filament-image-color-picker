@@ -8,6 +8,7 @@ export default function canvasColorPicker({
     function loadImage(src) {
 
         const img = new Image();
+        img.crossOrigin = '';
         img.src = src;
 
         return new Promise((resolve, reject) => {
