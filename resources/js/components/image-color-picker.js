@@ -2,7 +2,8 @@
 export default function canvasColorPicker({
     image,
     state,
-    format
+    format,
+    isLive
 }) {
 
     function loadImage(src) {
@@ -128,9 +129,12 @@ export default function canvasColorPicker({
         },
 
         onClick(e) {
+
             this.selectColor(e);
 
             this.selectedColor = this.previewColor;
+
+            isLive && this.$wire.$commit();
         },
 
         selectColor(e) {

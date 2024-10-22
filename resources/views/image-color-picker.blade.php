@@ -8,6 +8,7 @@ $helperText = $getHelperText();
 >
 <div
     x-data="canvasColorPicker({
+        isLive: @js($isLive()),
         image: @js($getImageSrc()),
         state: $wire.$entangle('{{ $getStatePath() }}'),
         format: @js($getFormat())
