@@ -5,6 +5,9 @@ namespace WallaceMaxters\FilamentImageColorPicker;
 use Closure;
 use Filament\Forms\Components\Field;
 
+/**
+ * @author Wallace Maxters <wallacemaxters@gmail.com>
+ */
 class ImageColorPicker extends Field
 {
     protected string $view = 'image-color-picker::image-color-picker';
