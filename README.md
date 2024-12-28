@@ -47,6 +47,9 @@ Use ImageColorPicker as Action:
 ```
 
 ## Preview
-
 https://github.com/user-attachments/assets/f1320c94-a275-4a54-8f3d-678607b46af9
+
+<video width="320" height="240" controls>
+  <source src="https://github.com/user-attachments/assets/f1320c94-a275-4a54-8f3d-678607b46af9" type="video/mp4">
+</video>
 
