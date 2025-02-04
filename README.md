@@ -1,8 +1,15 @@
-# Image Color Picker for Filament 3
+## Filament Image Color Picker 🎨  
 
-This library contains a custom form field to pick color from a image. 
+**Filament Image Color Picker** is a Filament plugin that provides a custom **color picker input** based on an image. This tool allows users to select colors directly from an image, making it perfect for applications that require precise color selection.  
 
-## Install
+
+### Features  
+✅ Select colors from any uploaded image  
+✅ Seamless integration with Filament forms  
+✅ User-friendly and highly customizable  
+✅ Supports multiple image formats  
+
+### Installation  
 
 ```bash
 composer require wallacemaxters/filament-image-color-picker
@@ -10,7 +17,7 @@ composer require wallacemaxters/filament-image-color-picker
 
 ## Usage
 
-Basic Input Usage example:
+To use the **Filament Image Color Picker**, simply include it in your Filament form field configuration:  
 
 ```php
 use WallaceMaxters\FilamentImageColorPicker\ImageColorPicker;
@@ -45,6 +52,9 @@ Use ImageColorPicker as Action:
 
     ),
 ```
+
+### License  
+This package is open-source and available under the **MIT License**.  
 
 ## Preview
 https://github.com/user-attachments/assets/f1320c94-a275-4a54-8f3d-678607b46af9
