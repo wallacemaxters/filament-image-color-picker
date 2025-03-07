@@ -53,6 +53,18 @@ Use ImageColorPicker as Action:
     ),
 ```
 
+You can capture the image from `FileUpload` component. 
+
+```php
+
+$uploadedFile = FileUpload::make('image');
+
+return $form->schema([
+    $uploadedFile,
+    ImageColorPicker::make('color')->fromComponent($uploadedFile),
+]);
+```
+
 ### License  
 This package is open-source and available under the **MIT License**.  
 
