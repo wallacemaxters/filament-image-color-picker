@@ -3,7 +3,10 @@
 namespace WallaceMaxters\FilamentImageColorPicker;
 
 use Closure;
+use Filament\Support\RawJs;
+use Illuminate\Support\Arr;
 use Filament\Forms\Components\Field;
+use Filament\Forms\Components\FileUpload;
 
 /**
  * @author Wallace Maxters <wallacemaxters@gmail.com>
@@ -12,11 +15,13 @@ class ImageColorPicker extends Field
 {
     protected string $view = 'image-color-picker::image-color-picker';
 
-    protected  Closure|string|null $imageSrc = null;
+    protected  Closure|RawJs|string|null $imageSrc = null;
 
     protected Closure|string $format = 'rgb';
 
-    public function image(string|Closure $src)
+    protected ?FileUpload $uploadComponent = null;
+
+    public function image(string | RawJs | Closure $src)
     {
         $this->imageSrc = $src;
 
@@ -53,5 +58,23 @@ class ImageColorPicker extends Field
     public function getFormat()
     {
         return $this->evaluate($this->format);
+    }
+
+    public function fromComponent(FileUpload $component)
+    {
+        $this->uploadComponent = $component;
+
+        return $this;
+    }
+
+    public function getImageFromUploadComponent()
+    {
+        if ($this->uploadComponent === null) {
+            return null;
+        }
+
+        $file = Arr::first($this->uploadComponent?->getUploadedFiles() ?? []);
+
+        if ($file) return $file['url'];
     }
 }
