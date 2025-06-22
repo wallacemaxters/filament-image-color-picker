@@ -11,8 +11,15 @@
 
 ### Installation  
 
+Filament 3
+
 ```bash
-composer require wallacemaxters/filament-image-color-picker
+composer require wallacemaxters/filament-image-color-picker ^0.6
+```
+Filament 4
+
+```bash
+composer require wallacemaxters/filament-image-color-picker ^0.1
 ```
 
 ## Usage
