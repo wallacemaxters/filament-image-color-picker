@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:css": "npx tailwindcss -i resources/css/index.css -o resources/dist/image-color-picker.css --postcss --minify --watch",
+    "build:css": "npx tailwindcss -i resources/css/index.css -o resources/dist/css/image-color-picker.css --postcss --minify --watch",
     "build:js": "node bin/build.js",
     "build:js:dev": "node bin/build.js --dev"
   },

@@ -46,5 +46,5 @@ const defaultOptions = {
 compile({
     ...defaultOptions,
     entryPoints: ['./resources/js/components/image-color-picker.js'],
-    outfile: './resources/js/dist/components/image-color-picker.js',
+    outfile: './resources/dist/js/components/image-color-picker.js',
 })

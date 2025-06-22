@@ -1,6 +1,6 @@
 @php
 $componentSrc = \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('image-color-picker', 'wallacemaxters/filament-image-color-picker');
-$helperText = $getHelperText();
+
 $src = $getImageFromUploadComponent() ?? $getImageSrc();
 
 @endphp
@@ -9,18 +9,18 @@ $src = $getImageFromUploadComponent() ?? $getImageSrc();
     :field="$field"
 >
 <div
-    x-data="canvasColorPicker({
+    x-data="imageColorPicker({
         isLive: @js($isLive()),
-        image: @js($src),
-        state: $wire.$entangle('{{ $getStatePath() }}'),
+        image: @js($src ?? ''),
+        state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }},
         format: @js($getFormat())
     })"
 
     class="wm-image-color-picker"
 
-    ax-load
+    x-load
     class="relative"
-    ax-load-src="{{ $componentSrc }}">
+    x-load-src="{{ $componentSrc }}">
 
     <template x-teleport="body">
         <div

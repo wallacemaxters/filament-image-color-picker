@@ -1,5 +1,5 @@
 
-export default function canvasColorPicker({
+export default function imageColorPicker({
     image,
     state,
     format,
